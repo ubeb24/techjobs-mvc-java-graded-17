@@ -37,8 +37,48 @@
   <hr />
 
   <!-- TODO #4 - Loop over the search results to display all job fields. -->
-
+    <table th:each="job : ${jobs}" class="job-listing">
+        <!--    <li ></li>-->
+        <tr>
+            <th>Id</th>
+            <td th:href="@{'/view/'+${job.id}}" th:text="${job.id}"></td>
+        </tr>
+        <tr>
+            <th>Name</th>
+            <td th:href="@{'/view/'+${job.name}}" th:text="${job.name}"></td>
+        </tr>
+        <tr>
+            <th>Employer</th>
+            <td th:href="@{'/view/'+${job.employer}}" th:text="${job.employer}"></td>
+        </tr>
+        <tr>
+            <th>Location</th>
+            <td th:href="@{'/view/'+${job.location}}" th:text="${job.location}"></td>
+        </tr>
+        <tr>
+            <th>Position Type</th>
+            <td th:href="@{'/view/'+${job.positionType}}" th:text="${job.positionType}"></td>
+        </tr>
+        <tr>
+            <th>Core Competency</th>
+            <td th:href="@{'/view/'+${job.coreCompetency}}" th:text="${job.coreCompetency}"></td>
+        </tr>
+    </table>
 </div>
 
 </body>
 </html>
+<!--Use the correct annotation for the method. To configure the correct mapping type and mapping route, refer to the form tag in the search.html template. (Use @GetMapping or @PostMapping rather than @RequestMapping.)-->
+
+<!--The displaySearchResults method should take in a Model parameter.-->
+
+<!--The method should also take in two other parameters, specifying the type of search and the search term.-->
+
+<!--In order for these last two parameters to be properly passed in by Spring Boot, you need to use the correct annotation. Also, you need to name them appropriately, based on the corresponding form field names defined in search.html.-->
+
+<!--If the user enters “all” in the search box, or if they leave the box empty, call the findAll() method from JobData.
+Otherwise, send the search information to findByColumnAndValue. In either case, store the results in a jobs ArrayList.-->
+
+<!--Pass jobs into the search.html view via the model parameter.-->
+
+<!--Pass ListController.columnChoices into the view, as the existing search handler does.-->
